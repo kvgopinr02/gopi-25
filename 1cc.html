@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Code Example: Input and Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8; /* Soft light background */
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff; /* White background */
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50; /* Dark blue */
+            font-size: 1.8em; /* Decreased font size */
+            transition: color 0.3s ease; /* Animation for heading */
+        }
+
+        h1:hover {
+            color: #1abc9c; /* Change color on hover */
+        }
+
+        .box {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #bdc3c7; /* Light gray border */
+            border-radius: 5px;
+            background-color: #ecf0f1; /* Very light gray */
+            position: relative;
+            transition: box-shadow 0.3s ease; /* Animation for box */
+        }
+
+        .box:hover {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Shadow on hover */
+        }
+
+        h2 {
+            color: #34495e; /* Darker gray */
+            margin-bottom: 10px;
+        }
+
+        .algorithm-box {
+            background-color: #ecf0f1; /* Match code box background */
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #bdc3c7; /* Match code box border */
+        }
+
+        pre {
+            background-color: #2c3e50; /* Dark blue background for code */
+            color: #ecf0f1; /* Light text color */
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 0;
+            transition: transform 0.2s ease; /* Animation on hover */
+        }
+
+        pre:hover {
+            transform: scale(1.02); /* Slight scale on hover */
+        }
+
+        code {
+            color: #ecf0f1; /* Light text color */
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #3498db; /* Bright blue */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s; /* Button animations */
+        }
+
+        .copy-btn:hover {
+            background-color: #2980b9; /* Darker blue */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #copy-message {
+            margin-top: 10px;
+            color: #27ae60; /* Green color */
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.5s ease-in-out; /* Fade-in effect */
+        }
+
+        #copy-message.visible {
+            opacity: 1; /* Make visible when copied */
+        }
+
+        .legend {
+            font-size: 1.1em;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Input and Display of Various Data Types</h1>
+
+        <div class="box algorithm-box">
+            <h2>Algorithm</h2>
+            <ol>
+                <li>Start the program.</li>
+                <li>Declare variables: an integer, a float, a character, and a double.</li>
+                <li>Prompt the user to enter an integer.</li>
+                <li>Read the integer input.</li>
+                <li>Prompt the user to enter a floating-point number.</li>
+                <li>Read the floating-point input.</li>
+                <li>Prompt the user to enter a character.</li>
+                <li>Read the character input.</li>
+                <li>Prompt the user to enter a double.</li>
+                <li>Read the double input.</li>
+                <li>Display all entered values to the user.</li>
+                <li>End the program.</li>
+            </ol>
+        </div>
+
+        <div class="box">
+            <div class="legend">C Code:</div>
+            <pre id="code"><code>
+#include <stdio.h>
+int main() {
+    int i;
+    float f;
+    char c;
+    double x;
+
+    printf("Integer: ");
+    scanf("%d", &i);
+    printf("Floating-point number: ");
+    scanf("%f", &f);
+    printf("Character: ");
+    scanf(" %c", &c);
+    printf("Double: ");
+    scanf("%lf", &x);
+    printf("You entered:\n");
+    printf("Integer: %d\n", i);
+    printf("Float: %f\n", f);
+    printf("Character: %c\n", c);
+    printf("Double: %lf\n", x);
+    return 0;
+}
+            </code></pre>
+            <button class="copy-btn" onclick="copyCode()">Copy</button>
+            <p id="copy-message" class="hidden">Code copied to clipboard!</p>
+        </div>
+    </div>
+
+    <script>
+        function copyCode() {
+            const code = document.getElementById('code').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const message = document.getElementById('copy-message');
+                message.classList.remove('hidden');
+                message.classList.add('visible');
+                setTimeout(() => {
+                    message.classList.add('hidden');
+                    message.classList.remove('visible');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
